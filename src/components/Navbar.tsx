@@ -42,9 +42,7 @@ export function Navbar() {
               right: 0,
               transform: "translate(25%, 25%)",
             }}
-          >
-            
-          </div>
+          ></div>
         </Button>
       </Container>
     </NavbarBs>
