@@ -1,14 +1,13 @@
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { formatCurrency } from "../utilities/formatCurrency";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+import { Button, Card } from "react-bootstrap"
+import { useShoppingCart } from "../context/ShoppingCartContext"
+import { formatCurrency } from "../utilities/formatCurrency"
 
 type StoreItemProps = {
-  id: number;
-  name: string;
-  price: number;
-  imgUrl: string;
-};
+  id: number
+  name: string
+  price: number
+  imgUrl: string
+}
 
 export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
   const {
@@ -16,8 +15,9 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart,
-  } = useShoppingCart();
-  const quantity = getItemQuantity(id);
+  } = useShoppingCart()
+  const quantity = getItemQuantity(id)
+
   return (
     <Card className="h-100">
       <Card.Img
@@ -52,9 +52,9 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
                 <Button onClick={() => increaseCartQuantity(id)}>+</Button>
               </div>
               <Button
+                onClick={() => removeFromCart(id)}
                 variant="danger"
                 size="sm"
-                onClick={() => removeFromCart(id)}
               >
                 Remove
               </Button>
@@ -63,5 +63,5 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
         </div>
       </Card.Body>
     </Card>
-  );
+  )
 }
